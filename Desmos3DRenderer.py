@@ -37,6 +37,9 @@ def Load():
     #print(vertex)
     #print(face)
     convertedfaces = Convert(vertex,face)
+def GetVectorFromFaces(vertecies):
+    
+        
 def Convert(vertex,face):
     faces = []
     for i in range(len(face)):
