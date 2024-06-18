@@ -38,8 +38,22 @@ def Load():
     #print(face)
     convertedfaces = Convert(vertex,face)
 def GetVectorFromFaces(vertecies):
+    # an arbitrarily set of 3D verticies, if the face is planar, getting a vector from 2 points. 
+    #will return a right angle from the outside/inside face normal.
+    #if a face has non planar points, the face has to be divided into faces which are planar.
+    #(increases char count, allows shaded and materials, material properties carry over. lag increased for shaded degrees)
+    #finding face normal of planar face, is getting 3 verts (A,B,C), find vector of Pair A,B, and B,C and get the cross product,
+    vert = vertecies.split("\")
+    ax=
+    ay=
+    az=
+    bx=
+    by=
+    bz=
+   cx = ay*bz − az*by
+    cy = az*bx − ax*bz
+    cz = ax*by − ay*bx
     
-        
 def Convert(vertex,face):
     faces = []
     for i in range(len(face)):
