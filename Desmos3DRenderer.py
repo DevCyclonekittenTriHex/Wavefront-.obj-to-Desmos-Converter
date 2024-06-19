@@ -79,7 +79,7 @@ def Convert(vertex,face):
             for i in range(len(currentalias)):
                 
                 cmd = cmd + GenerateAlias(str(currentalias[i]))+"\n"
-            f=open("aliasfix.txt","a")
+            f=open("Output/command_"+nameobj.get()+"_aliasfix.txt","a")
             f.write(cmd)
             f.close()
             if MSGAliasCreated()==True:
@@ -158,7 +158,7 @@ def MSGAliasError(desc):
                                 \n Face-Vertex Count Missing:{desc}""", parent=root)
     return yn2
 def MSGAliasCreated():
-    yn = tk.messagebox.askyesno("Alias Created Sucessfully","Do you want to copy to clipboard. \n Alias still retrievable in file aliasfix.txt",parent=root)
+    yn = tk.messagebox.askyesno("Alias Created Sucessfully","Do you want to copy to clipboard. \n Alias still retrievable in file command_"+nameobj.get()+"_aliasfix.txt",parent=root)
     return yn
 def GetVectorFromFaces(vertecies):
     # an arbitrarily set of 3D verticies, if the face is planar, getting a vector from 2 points. 
