@@ -44,16 +44,19 @@ def GetVectorFromFaces(vertecies):
     #(increases char count, allows shaded and materials, material properties carry over. lag increased for shaded degrees)
     #finding face normal of planar face, is getting 3 verts (A,B,C), find vector of Pair A,B, and B,C and get the cross product,
     vert = vertecies.split("\")
-    ax=
-    ay=
-    az=
-    bx=
-    by=
-    bz=
+    v1=vert[0].split(",")
+    v2=vert[1].split(",")
+    v3=vert[2].split(",")
+    ax=v2[0]-v1[0]
+    ay=v2[1]-v1[1]
+    az=v2[2]-v1[2]
+    bx=v3[0]-v2[0]
+    by=v3[1]-v2[1]
+    bz=v3[2]-v2[2]
    cx = ay*bz − az*by
     cy = az*bx − ax*bz
     cz = ax*by − ay*bx
-    
+    print(f"Vector: <{cx},{cy},{cz}>")
 def Convert(vertex,face):
     faces = []
     for i in range(len(face)):
