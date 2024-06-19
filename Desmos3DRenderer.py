@@ -53,7 +53,7 @@ def GetVectorFromFaces(vertecies):
     bx=v3[0]-v2[0]
     by=v3[1]-v2[1]
     bz=v3[2]-v2[2]
-   cx = ay*bz − az*by
+    cx = ay*bz − az*by
     cy = az*bx − ax*bz
     cz = ax*by − ay*bx
     
