@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.messagebox
-
+import math
 root = tk.Tk()
 root.title("Wavefront (.obj) to Desmos 3D Object")
 decimalrounding = 2
@@ -56,7 +56,17 @@ def GetVectorFromFaces(vertecies):
    cx = ay*bz − az*by
     cy = az*bx − ax*bz
     cz = ax*by − ay*bx
+    
     print(f"Vector: <{cx},{cy},{cz}>")
+
+    #from vector, find angle between vector and cam vector.
+    cam = [0,0,-1] #+180 degrees, so vector facing towards camera is facing the same direction as camvector.
+    c=[cx,cy,cz]
+    angle = (cam[0]*c[0])+(cam[1]*c[1])+(cam[2]*c[2])
+    angle = math.acos(angle)
+    print(angle)
+    
+    
 def Convert(vertex,face):
     faces = []
     for i in range(len(face)):
