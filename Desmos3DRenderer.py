@@ -8,7 +8,7 @@ root.title("Wavefront (.obj) to Desmos 3D Object")
 decimalrounding = 2
 root.minsize(300,500)
 root.maxsize(300,500)
-def Load():
+def Load(dimensions):
     string = filepath.get()
     currentalias = []
     if(string == ""):
@@ -40,8 +40,11 @@ def Load():
                 face.append(words[i])
     #print(vertex)
     #print(face)
-    convertedfaces = Convert(vertex,face)
-def Convert(vertex,face):
+    if(dimensions==3):
+        convertedfaces = Convert2D(vertex,face)
+    else if dimensions==3:
+        convertedfaces = Convert3D(vertex,face)
+def Convert2D(vertex,face):
     faces = []
     for i in range(len(face)):
         #print(f"Face {i+1}:")
@@ -232,7 +235,8 @@ namelabel = tk.Label(root, text = 'ObjectName:', font=('calibre',10, 'bold'))
 nameobj = tk.Entry(root, font=('calibre',10,'normal'))
 filepath = tk.Entry(root, font=('calibre',10,'normal'))
 roundinglength = tk.Entry(root, font=('calibre',10,'normal'))
-convertbtn = tk.Button(root, text="Convert",command=Load)
+convertbtn2d = tk.Button(root, text="Convert To 2D Renderer",command=Load)
+convertbtn3d = tk.Button(root, text="Convert To 3D Renderer",command=Load)
 
 #filepath.insert(TestObjects\monkey.obj')
 
@@ -251,7 +255,8 @@ roundinglength.grid(row=3,column=2)
 roundinglabel2.grid(row=3,column=3)
 
 
-convertbtn.grid(row=10,column=2)
+convertbtn2d.grid(row=10,column=2)
+convertbtn3d.grid(row=9,column=2)
 
 root.mainloop()
 
