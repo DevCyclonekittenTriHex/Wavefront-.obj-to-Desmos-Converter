@@ -16,7 +16,7 @@ HOW TO USE SOFTWARE:
     -No, this will not copy it and keep the shape command.
     Clicking No will still keep the fix command in comand_"name"_aliasfix.txt
 
-    Paste the shape command into link: https: not yet finished
+    Paste the shape command into link: (https://www.desmos.com/calculator/hqkrjcobkk)
     Paste the fix command (if needed) into a folder for easier use.
     
   Convert to 3D Button:
