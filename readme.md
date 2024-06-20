@@ -1,7 +1,8 @@
 HOW TO USE SOFTWARE:
   This code is currently in Beta stage, the raw code is not compiled and requires python plus a few modules listed below:
-  -math
-  -tkinter
+  -Math Module
+  -Tkinter Module
+  -Python 3+
   Running Desmos3DConverter.py will have a gui which has a few boxes:
   Name of Object (This will appear inside Desmos)
   Filename of .obj file (This is not path dependant, enter "TestObj/cube.obj" or enter "C:\...../cube.obj")
