@@ -88,7 +88,7 @@ def GenerateCommandsForStandaloneProject2D(rotate,root):
     cmd = cmd + """
     c_{1}=0\n
     c_{2}=0\n
-    c_{3}=0\n
+    c_{3}=50\n
     C_{xrot}=0\n
     C_{yrot}=0\n
     C_{zrot}=0\n
@@ -107,8 +107,12 @@ def GenerateCommandsForStandaloneProject2D(rotate,root):
     X_{z}\ \left(a,b,c\\right)=\ X\left(a\cos\left(C_{zrot}\\right)-b\sin\left(C_{zrot}\\right),a\sin\left(C_{zrot}\\right)+b\cos\left(C_{zrot}\\right),c\\right)\n
     Y_{z}\ \left(a,b,c\\right)=\ Y\left(a\cos\left(C_{zrot}\\right)-b\sin\left(C_{zrot}\\right),a\sin\left(C_{zrot}\\right)+b\cos\left(C_{zrot}\\right),c\\right)\n
     """
-    #cmd = cmd + "F_{4}\left(a,b,c,d\\right)=\operatorname{polygon}\left(\left(X_{x}\left(a\left[1\\right],b\left[1\\right],c\left[1\\right]\\right),Y_{x}\left(a\left[1\\right],b\left[1\\right],c\left[1\\right]\\right)\\right),\left(X_{x}\left(a\left[2\\right],b\left[2\\right],c\left[2\\right]\\right),Y_{x}\left(a\left[2\\right],b\left[2\\right],c\left[2\\right]\\right)\\right),\left(X_{x}\left(a\left[3\\right],b\left[3\\right],c\left[3\\right]\\right),Y_{x}\left(a\left[3\\right],b\left[3\\right],c\left[3\\right]\\right)\\right),\left(X_{x}\left(a\left[4\\right],b\left[4\\right],c\left[4\\right]\\right),Y_{x}\left(a\left[4\\right],b\left[4\\right],c\left[4\\right]\\right)\\right)\\right)"
-    cmd = cmd + GenerateAlias("4")
+    cmd = cmd + GenerateAlias("3")+"\n"
+    cmd = cmd + GenerateAlias("4")+"\n"
+    cmd = cmd + GenerateAlias("6")+"\n"
+    cmd = cmd + GenerateAlias("12")+"\n"
+    cmd = cmd + GenerateAlias("16")+"\n"
+    cmd = cmd + GenerateAlias("32")+"\n"
     ToClipboard(cmd,root)
 def Convert2D(vertex,face,rt,decimalrounding,name):
     faces = []
