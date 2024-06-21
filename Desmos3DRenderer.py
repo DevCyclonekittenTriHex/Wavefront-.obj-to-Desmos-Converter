@@ -30,9 +30,12 @@ def ConvertTo2D():
 def ConvertTo3D():
     Load3D(filepath.get(),root,int(roundinglength.get()))
     return
+def CreateStandalone2D():
+    GenerateCommandsForStandaloneProject2D(false,root)
+    return
 convertbtn2d = tk.Button(root, text="Convert To 2D Renderer",command=ConvertTo2D)
 convertbtn3d = tk.Button(root, text="Convert To 3D Renderer",command=ConvertTo3D)
-
+create2d = tk.Button(root, text="Create 2D Renderer Environment",command=CreateStandalone2D)
 
 titlelabel.grid(row =0,column=1,columnspan=3)
 #Labels
