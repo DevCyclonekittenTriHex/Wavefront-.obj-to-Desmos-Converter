@@ -31,7 +31,7 @@ def ConvertTo3D():
     Load3D(filepath.get(),root,int(roundinglength.get()))
     return
 def CreateStandalone2D():
-    GenerateCommandsForStandaloneProject2D(false,root)
+    GenerateCommandsForStandaloneProject2D(False,root)
     return
 convertbtn2d = tk.Button(root, text="Convert To 2D Renderer",command=ConvertTo2D)
 convertbtn3d = tk.Button(root, text="Convert To 3D Renderer",command=ConvertTo3D)
@@ -53,6 +53,7 @@ roundinglength.grid(row=3,column=2)
 #Buttons
 convertbtn2d.grid(row=10,column=2)
 convertbtn3d.grid(row=9,column=2)
+create2d.grid(row=8,column=2)
 
 nameobj.insert(0, "Cube001") 
 filepath.insert(0, "TestObj/cube.obj") 

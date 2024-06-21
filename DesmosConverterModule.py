@@ -93,20 +93,21 @@ def GenerateCommandsForStandaloneProject2D(rotate,root):
     C_{yrot}=0\n
     C_{zrot}=0\n
     C_{xscale}=1\n
-    C_{xscale}=1\n
-    C_{xscale}=1\n
+    C_{yscale}=1\n
+    C_{zscale}=1\n
     """
-
+    
     cmd = cmd + """
-    X\left(a,b,c\right)=\left(\frac{c_{3}}{c_{3}+c\cdot C_{zscale}}\left(a\cdot C_{xscale}+c_{1}\right)\right)\n
-    Y\left(a,b,c\right)=\left(\frac{c_{3}}{c_{3}+c\cdot C_{zscale}}\left(b\cdot C_{yscale}+c_{2}\right)\right)\n
-    X_{x}\left(a,b,c\right)=\ X_{y}\left(a,b\cos\left(C_{xrot}\right)-c\sin\left(C_{xrot}\right),b\sin\left(C_{xrot}\right)+c\cos\left(C_{xrot}\right)\right)\n
-    Y_{x}\left(a,b,c\right)=\ Y_{y}\left(a,b\cos\left(C_{xrot}\right)-c\sin\left(C_{xrot}\right),b\sin\left(C_{xrot}\right)+c\cos\left(C_{xrot}\right)\right)\n
-    X_{y}\left(a,b,c\right)=\ X_{z}\left(a\cos\left(C_{yrot}\right)+c\sin\left(C_{yrot}\right),b,-a\sin\left(C_{yrot}\right)+c\cos\left(C_{yrot}\right)\right)\n
-    Y_{y}\left(a,b,c\right)=\ Y_{z}\left(a\cos\left(C_{yrot}\right)+c\sin\left(C_{yrot}\right),b,-a\sin\left(C_{yrot}\right)+c\cos\left(C_{yrot}\right)\right)\n
-    X_{z}\ \left(a,b,c\right)=\ X\left(a\cos\left(C_{zrot}\right)-b\sin\left(C_{zrot}\right),a\sin\left(C_{zrot}\right)+b\cos\left(C_{zrot}\right),c\right)\n
-    Y_{z}\ \left(a,b,c\right)=\ Y\left(a\cos\left(C_{zrot}\right)-b\sin\left(C_{zrot}\right),a\sin\left(C_{zrot}\right)+b\cos\left(C_{zrot}\right),c\right)\n
+    X\left(a,b,c\\right)=\left(\\frac{c_{3}}{c_{3}+c\cdot C_{zscale}}\left(a\cdot C_{xscale}+c_{1}\\right)\\right)\n
+    Y\left(a,b,c\\right)=\left(\\frac{c_{3}}{c_{3}+c\cdot C_{zscale}}\left(b\cdot C_{yscale}+c_{2}\\right)\\right)\n
+    X_{x}\left(a,b,c\\right)=\ X_{y}\left(a,b\cos\left(C_{xrot}\\right)-c\sin\left(C_{xrot}\\right),b\sin\left(C_{xrot}\\right)+c\cos\left(C_{xrot}\\right)\\right)\n
+    Y_{x}\left(a,b,c\\right)=\ Y_{y}\left(a,b\cos\left(C_{xrot}\\right)-c\sin\left(C_{xrot}\\right),b\sin\left(C_{xrot}\\right)+c\cos\left(C_{xrot}\\right)\\right)\n
+    X_{y}\left(a,b,c\\right)=\ X_{z}\left(a\cos\left(C_{yrot}\\right)+c\sin\left(C_{yrot}\\right),b,-a\sin\left(C_{yrot}\\right)+c\cos\left(C_{yrot}\\right)\\right)\n
+    Y_{y}\left(a,b,c\\right)=\ Y_{z}\left(a\cos\left(C_{yrot}\\right)+c\sin\left(C_{yrot}\\right),b,-a\sin\left(C_{yrot}\\right)+c\cos\left(C_{yrot}\\right)\\right)\n
+    X_{z}\ \left(a,b,c\\right)=\ X\left(a\cos\left(C_{zrot}\\right)-b\sin\left(C_{zrot}\\right),a\sin\left(C_{zrot}\\right)+b\cos\left(C_{zrot}\\right),c\\right)\n
+    Y_{z}\ \left(a,b,c\\right)=\ Y\left(a\cos\left(C_{zrot}\\right)-b\sin\left(C_{zrot}\\right),a\sin\left(C_{zrot}\\right)+b\cos\left(C_{zrot}\\right),c\\right)\n
     """
+    cmd = cmd + GenerateAlias(4)
     ToClipboard(cmd,root)
 def Convert2D(vertex,face,rt,decimalrounding,name):
     faces = []
@@ -247,9 +248,9 @@ def ToPolygon3D(vertex,decimalrounding):
         
         for i in range(4-2):
             cmd = ""
-            cmd = cmd + "triangle\\left(\\left("+vertex[0].split()[1]+","+vertex[0].split()[2]+","+vertex[0].split()[3]+"\\right),"
-            cmd = cmd + "\\left("+vertex[i+1].split()[1]+","+vertex[i+1].split()[2]+","+vertex[i+1].split()[3]+"\\right),"
-            cmd = cmd + "\\left("+vertex[i+2].split()[1]+","+vertex[i+2].split()[2]+","+vertex[i+2].split()[3]+"\\right)\\right)"
+            cmd = cmd + "triangle\\left(\\left("+vertex[0].split()[1]+","+vertex[0].split()[2]+","+vertex[0].split()[3]+"\\\right),"
+            cmd = cmd + "\\left("+vertex[i+1].split()[1]+","+vertex[i+1].split()[2]+","+vertex[i+1].split()[3]+"\\\right),"
+            cmd = cmd + "\\left("+vertex[i+2].split()[1]+","+vertex[i+2].split()[2]+","+vertex[i+2].split()[3]+"\\\right)\\\right)"
             cmd = cmd + "\n"
             
             curr.append(cmd)
