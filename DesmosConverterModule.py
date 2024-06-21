@@ -1,10 +1,19 @@
 import tkinter as tk
 import tkinter.messagebox
 import math
+import webbrowser
+#Used by functions
+currentalias = []
+#Startup
+f=open("settings.txt","r")
+words=f.read().split(",")
+f.close()
+
+DisableCopyToClipboard=False
 
 
 #Converting
-def Load2D(path,rt,decimalrounding):
+def Load2D(path,rt,decimalrounding,name):
     string = path
     currentalias = []
     if(string == ""):
@@ -37,7 +46,7 @@ def Load2D(path,rt,decimalrounding):
     #print(vertex)
     #print(face)
     
-    convertedfaces = Convert2D(vertex,face,rt,decimalrounding)
+    convertedfaces = Convert2D(vertex,face,rt,decimalrounding,name)
 def Load3D(path,rt,decimalrounding):
     string = path
     currentalias = []
@@ -73,7 +82,7 @@ def Load3D(path,rt,decimalrounding):
         convertedfaces = Convert3D(vertex,face,True,rt,decimalrounding)
     else:
         convertedfaces = Convert3D(vertex,face,False,rt,decimalrounding)   
-def Convert2D(vertex,face,rt,decimalrounding):
+def Convert2D(vertex,face,rt,decimalrounding,name):
     faces = []
     for i in range(len(face)):
         #print(f"Face {i+1}:")
@@ -94,10 +103,10 @@ def Convert2D(vertex,face,rt,decimalrounding):
     cmd = cmd + "]"
     #print(cmd) 
     ToClipboard(cmd,rt)
-    f=open("Output/command_"+nameobj.get()+".txt","w")
+    f=open("Output/command_"+name+".txt","w")
     f.write(cmd)
     f.close()
-    MSGClipboard()
+    MSGClipboard(name)
     #print("New Alaises:")
     if len(currentalias)!=0:
         descriptor = ""
@@ -203,7 +212,7 @@ def ToFace(facevertex,decimalrounding):
     command = f"F_"+"{"+str(len(x))+"}"+f"([{xs}],[{ys}],[{zs}],{len(x)})"
     #print(command)
     return command   
-def ToPolygon3D(vertex):
+def ToPolygon3D(vertex,decimalrounding):
     
     
     
@@ -282,8 +291,10 @@ def GetVectorFromFaces(vertecies):
 def MSGFileError():
     yn = tk.messagebox.showerror("File not found error","File not found")
     return yn
-def MSGClipboard():
-    yn = tk.messagebox.showinfo("Copied!","Copied Command to Clipboard\nCommand availiable in command_"+nameobj.get()+".txt")
+def MSGClipboard(name):
+    if DisableCopyToClipboard==True:
+        return
+    yn = tk.messagebox.showinfo("Copied!","Copied Command to Clipboard\nCommand availiable in command_"+name+".txt")
     return yn
 def MSGStandalone():
     yn = tk.messagebox.askyesno("3D Option","Do you want to generate the object as a standalone object (can be pasted into any project). Clicking No will generate it for designated project")
@@ -292,12 +303,25 @@ def MSGAliasError(desc):
 
     yn2 = tk.messagebox.askyesno("Generate Vertex-Face Alias", f"""Your Object has faces with unsupported default vertex count.
                                 \n Do you want to generate a Alias to support your object.
-                                \n Face-Vertex Count Missing:{desc}""", parent=root)
+                                \n Face-Vertex Count Missing:{desc}""")
     return yn2
 def MSGAliasCreated():
 
     yn = tk.messagebox.askyesno("Alias Created Sucessfully","Do you want to copy to clipboard. \n Alias still retrievable in file command_"+nameobj.get()+"_aliasfix.txt")
     return yn
 def MSGDebug():
+
     yn = tk.messagebox.showerror("Disabled","This Feature is Disabled! Complain to the developer to hurry up and add it! :(")
     return yn
+def MSGWebsiteOpener():
+    yn = tk.messagebox.askyesno("Redirect","Do you want to open the 2D Renderer Desmos Project")
+    if(yn):
+        webbrowser.open('https://www.desmos.com/calculator/hqkrjcobkk')  # Go to example.com
+#On Startup Settings Applier
+
+if(words[0].split(":")[1]=="1"):
+    MSGWebsiteOpener()
+
+if(words[1].split(":")[1]=="1"):
+    DisableCopyToClipboard = True
+#print(words)

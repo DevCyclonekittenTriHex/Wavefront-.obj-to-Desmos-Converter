@@ -25,7 +25,7 @@ filepath = tk.Entry(root, font=('calibre',10,'normal'))
 roundinglength = tk.Entry(root, font=('calibre',10,'normal'))
 #Button
 def ConvertTo2D():
-    Load2D(filepath.get(),root,int(roundinglength.get()))
+    Load2D(filepath.get(),root,int(roundinglength.get()),nameobj.get())
     return
 def ConvertTo3D():
     Load3D(filepath.get(),root,int(roundinglength.get()))
@@ -50,6 +50,10 @@ roundinglength.grid(row=3,column=2)
 #Buttons
 convertbtn2d.grid(row=10,column=2)
 convertbtn3d.grid(row=9,column=2)
+
+nameobj.insert(0, "Cube001") 
+filepath.insert(0, "TestObj/cube.obj") 
+roundinglength.insert(0,"2")
 
 root.mainloop()
 
