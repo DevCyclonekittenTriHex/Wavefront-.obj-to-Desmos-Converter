@@ -107,7 +107,8 @@ def GenerateCommandsForStandaloneProject2D(rotate,root):
     X_{z}\ \left(a,b,c\\right)=\ X\left(a\cos\left(C_{zrot}\\right)-b\sin\left(C_{zrot}\\right),a\sin\left(C_{zrot}\\right)+b\cos\left(C_{zrot}\\right),c\\right)\n
     Y_{z}\ \left(a,b,c\\right)=\ Y\left(a\cos\left(C_{zrot}\\right)-b\sin\left(C_{zrot}\\right),a\sin\left(C_{zrot}\\right)+b\cos\left(C_{zrot}\\right),c\\right)\n
     """
-    cmd = cmd + GenerateAlias(4)
+    #cmd = cmd + "F_{4}\left(a,b,c,d\\right)=\operatorname{polygon}\left(\left(X_{x}\left(a\left[1\\right],b\left[1\\right],c\left[1\\right]\\right),Y_{x}\left(a\left[1\\right],b\left[1\\right],c\left[1\\right]\\right)\\right),\left(X_{x}\left(a\left[2\\right],b\left[2\\right],c\left[2\\right]\\right),Y_{x}\left(a\left[2\\right],b\left[2\\right],c\left[2\\right]\\right)\\right),\left(X_{x}\left(a\left[3\\right],b\left[3\\right],c\left[3\\right]\\right),Y_{x}\left(a\left[3\\right],b\left[3\\right],c\left[3\\right]\\right)\\right),\left(X_{x}\left(a\left[4\\right],b\left[4\\right],c\left[4\\right]\\right),Y_{x}\left(a\left[4\\right],b\left[4\\right],c\left[4\\right]\\right)\\right)\\right)"
+    cmd = cmd + GenerateAlias("4")
     ToClipboard(cmd,root)
 def Convert2D(vertex,face,rt,decimalrounding,name):
     faces = []
@@ -185,9 +186,15 @@ def GenerateAlias(integer):
     cmd = "F_{"+integer+"}"
     cmd = cmd + "(a,b,c,d)=\\operatorname{polygon}("
     for i in range(int(integer)):
-        cmd = cmd + "(X_{x}(a["+str(i+1)+"],b["+str(i+1)+"],c["+str(i+1)+"]),Y_{x}(a["+str(i+1)+"],b["+str(i+1)+"],c["+str(i+1)+"]))"
+        cmd = cmd + "(X_{x}(a["+str(i+1)+"],b["+str(i+1)+"],c["+str(i+1)+"]),Y_{x}(a["+str(i+1)+"],b["+str(i+1)+"],c["+str(i+1)+"])),"
+    cmd = cmd + "removethis"
+    cmd = cmd.replace(",removethis","")
     cmd = cmd + ")"
-   # print(cmd)
+    cmd = cmd.replace(")","\\right)")
+    cmd = cmd.replace("(","\\left(")
+    cmd = cmd.replace("[","\\left[")
+    cmd = cmd.replace("]","\\right]")
+    print(cmd)
     return cmd
 def ToFace(facevertex,decimalrounding):
     x=[]
