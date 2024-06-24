@@ -113,6 +113,9 @@ def GenerateCommandsForStandaloneProject2D(rotate,root):
     cmd = cmd + GenerateAlias("12")+"\n"
     cmd = cmd + GenerateAlias("16")+"\n"
     cmd = cmd + GenerateAlias("32")+"\n"
+    f = open("Output/command_customrender_environment_2d.txt","w+")
+    f.write(cmd)
+    f.close()
     ToClipboard(cmd,root)
 def Convert2D(vertex,face,rt,decimalrounding,name):
     faces = []
@@ -170,7 +173,7 @@ def Convert3D(vertex,face,standalone,rt,decimalrounding):
             selv = vertex[int(index[0])-1]
             curr.append(selv)
         faces.append(ToPolygon3D(curr,decimalrounding))
-    print(faces)
+    #print(faces)
     MSGDebug()
     #ToClipboard(faces)
     return
@@ -198,7 +201,7 @@ def GenerateAlias(integer):
     cmd = cmd.replace("(","\\left(")
     cmd = cmd.replace("[","\\left[")
     cmd = cmd.replace("]","\\right]")
-    print(cmd)
+    #print(cmd)
     return cmd
 def ToFace(facevertex,decimalrounding):
     x=[]
@@ -322,7 +325,8 @@ def GetVectorFromFaces(vertecies):
             #print("Angle: 0.0")
             return 0
         else:
-            print("I AM PROBABLY STUPID")
+            pass
+            #print("I AM PROBABLY STUPID")
             #print(c)
             #print(cam)
 #MessageFeedBack
